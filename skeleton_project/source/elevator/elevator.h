@@ -30,7 +30,6 @@ typedef struct Elevator Elevator;
 
 Elevator initialize();
 
-
 /**@brief
  *
  * @param elevator
