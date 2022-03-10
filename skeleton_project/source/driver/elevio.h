@@ -1,6 +1,7 @@
+/** @file
+  * @brief All driver functions for the elevator server
+  */
 #pragma once
-
-
 #define N_FLOORS 4
 
 typedef enum { 
@@ -18,7 +19,9 @@ typedef enum {
     BUTTON_CAB          = 2
 } ButtonType;
 
-
+/**
+ * @brief Intializes elevator
+ */
 void elevio_init(void);
 
 /**

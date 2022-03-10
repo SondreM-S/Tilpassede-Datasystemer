@@ -7,6 +7,7 @@
 
 
 Elevator initialize() {
+    door_close();
     int floor = elevio_floorSensor();
     if (floor < 0) {
         elevio_motorDirection(1);
@@ -14,7 +15,7 @@ Elevator initialize() {
             floor = elevio_floorSensor();
 
         }
-        printf("Stopping motor");
+
         elevio_motorDirection(0);
     }
     Elevator elevator;
@@ -108,19 +109,18 @@ void check_if_stop_at_floor_down(Elevator *elevator) {
 }
 
 void clear_order(Elevator *elevator) {
-    printf("clear order");
     int currentfloor = elevio_floorSensor();
     if (elevator->lastDirection == up) {
         elevator->orderList[currentfloor][0] = 0;
         elevator->orderList[currentfloor][2] = 0;
-        if(currentfloor == N_FLOORS-1){
+        if (currentfloor == N_FLOORS - 1) {
             elevator->orderList[currentfloor][1] = 0;
             elevator->orderList[currentfloor][2] = 0;
         }
     } else if (elevator->lastDirection == down) {
         elevator->orderList[currentfloor][1] = 0;
         elevator->orderList[currentfloor][2] = 0;
-        if(currentfloor == 0){
+        if (currentfloor == 0) {
             elevator->orderList[currentfloor][0] = 0;
             elevator->orderList[currentfloor][2] = 0;
         }
@@ -132,67 +132,75 @@ void clear_all_orders(Elevator *elevator) {
 }
 
 void check_state(Elevator *elevator) {
-
     switch (elevator->state) {
         case movingUp:
-            elevio_motorDirection(1);
-            elevator->lastDirection = up;
-            check_if_stop_at_floor_up(elevator);
+            moving_up_case(elevator);
             break;
-
         case movingDown:
-            elevio_motorDirection(-1);
-            check_if_stop_at_floor_down(elevator);
-            elevator->lastDirection = down;
+            moving_down_case(elevator);
             break;
-
         case stopped:
-            elevio_motorDirection(0);
-            clear_all_orders(elevator);
-            elevator->state = idle;
+            stopped_case(elevator);
             break;
-
         case loading:
-
-
-            elevio_motorDirection(0);
-            time_t currentTime = time(NULL);
-            if (elevator->door == closed) {
-                door_open();
-                elevator->door = open;
-                timeDoorOpened = time(NULL);
-
-            } else if (currentTime - timeDoorOpened >= 3) {
-                if (elevator->obstruction == 1) {
-                    timeDoorOpened = time(NULL);
-                } else {
-                    door_close();
-                    elevator->door = closed;
-                    clear_order(elevator);
-                    elevator->state = idle;
-
-                }
-            }
-
+            loading_case(elevator);
             break;
-
-
         case idle:
-            elevio_motorDirection(0);
-            if (elevator->lastDirection == up) {
-                check_if_stop_at_floor_up(elevator);
-                if (elevator->state == idle) {
-                    check_if_stop_at_floor_down(elevator);
-                }
-
-            } else if (elevator->lastDirection == down) {
-                check_if_stop_at_floor_down(elevator);
-                if (elevator->state == idle) {
-                    check_if_stop_at_floor_up(elevator);
-                }
-
-            }
-
+            idle_case(elevator);
             break;
     }
+}
+
+void moving_up_case(Elevator *elevator) {
+    elevio_motorDirection(1);
+    elevator->lastDirection = up;
+    check_if_stop_at_floor_up(elevator);
+}
+
+void moving_down_case(Elevator *elevator) {
+    elevio_motorDirection(-1);
+    check_if_stop_at_floor_down(elevator);
+    elevator->lastDirection = down;
+}
+
+void loading_case(Elevator *elevator) {
+    elevio_motorDirection(0);
+    time_t currentTime = time(NULL);
+    if (elevator->door == closed) {
+        door_open();
+        elevator->door = open;
+        timeDoorOpened = time(NULL);
+
+    } else if (currentTime - timeDoorOpened >= 3) {
+        if (elevator->obstruction == 1) {
+            timeDoorOpened = time(NULL);
+        } else {
+            door_close();
+            elevator->door = closed;
+            clear_order(elevator);
+            elevator->state = idle;
+        }
+    }
+}
+
+void idle_case(Elevator *elevator) {
+    elevio_motorDirection(0);
+    if (elevator->lastDirection == up) {
+        check_if_stop_at_floor_up(elevator);
+        if (elevator->state == idle) {
+            check_if_stop_at_floor_down(elevator);
+        }
+    } else if (elevator->lastDirection == down) {
+        check_if_stop_at_floor_down(elevator);
+        if (elevator->state == idle) {
+            check_if_stop_at_floor_up(elevator);
+        }
+
+    }
+}
+
+void stopped_case(Elevator *elevator) {
+    elevio_motorDirection(0);
+    clear_all_orders(elevator);
+    elevator->state = idle;
 }
