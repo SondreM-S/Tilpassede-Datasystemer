@@ -1,2 +1,2 @@
-# Tilpassede-Datasystemer
-Prosjektet til gruppe 67
+# Tilpassede_Datasystemer-Heisprosjekt
+Heisprosjekt

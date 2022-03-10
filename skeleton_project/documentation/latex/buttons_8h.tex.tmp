@@ -1,0 +1,49 @@
+\hypertarget{buttons_8h}{}\doxysection{source/buttons/buttons.h File Reference}
+\label{buttons_8h}\index{source/buttons/buttons.h@{source/buttons/buttons.h}}
+
+
+Handling of Button signals.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{buttons_8h_a04d3931bcb7cea8ab7030e99a0f8ecd3}{buttons\+\_\+get\+\_\+signal}} (Button\+Type button, int floor)
+\begin{DoxyCompactList}\small\item\em Returns the button list which includes the floor level and the button pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{buttons_8h_a7033f21120ae31254fdede89480b03ec}\label{buttons_8h_a7033f21120ae31254fdede89480b03ec}} 
+void \mbox{\hyperlink{buttons_8h_a7033f21120ae31254fdede89480b03ec}{fetch\+\_\+button\+\_\+signal}} ()
+\begin{DoxyCompactList}\small\item\em Fetches the button signals from the elevator driver (elevio) and updates the button signal list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handling of Button signals. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{buttons_8h_a04d3931bcb7cea8ab7030e99a0f8ecd3}\label{buttons_8h_a04d3931bcb7cea8ab7030e99a0f8ecd3}} 
+\index{buttons.h@{buttons.h}!buttons\_get\_signal@{buttons\_get\_signal}}
+\index{buttons\_get\_signal@{buttons\_get\_signal}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{buttons\_get\_signal()}{buttons\_get\_signal()}}
+{\footnotesize\ttfamily int buttons\+\_\+get\+\_\+signal (\begin{DoxyParamCaption}\item[{Button\+Type}]{button,  }\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Returns the button list which includes the floor level and the button pressed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em button} & The called button (B\+U\+T\+T\+O\+N\+\_\+\+H\+A\+L\+L\+\_\+\+UP, B\+U\+T\+T\+O\+N\+\_\+\+H\+A\+L\+L\+\_\+\+D\+O\+WN, B\+U\+T\+T\+O\+N\+\_\+\+C\+AB) \\
+\hline
+\mbox{\texttt{ in}}  & {\em floor} & The current floor the button was pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The button is pressed or not (1 or 0 as value) 
+\end{DoxyReturn}
+
+
+Definition at line 4 of file buttons.\+c.
+

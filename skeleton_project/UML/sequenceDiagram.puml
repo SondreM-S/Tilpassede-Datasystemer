@@ -1,0 +1,12 @@
+https://plantuml.com/sequence-diagram
+
+@startuml
+alice -> Stian ++ : hello
+Stian -> Stian ++ : self call
+Stian -> bib ++  #005500 : hello
+Stian -> george ** : create
+return done
+return rc
+Stian -> george !! : delete
+return success
+@enduml
