@@ -1,6 +1,3 @@
-//
-// Created by student on 07.03.2022.
-//
 #include "stdio.h"
 #include "../driver/elevio.h"
 #include "elevator.h"
@@ -36,12 +33,6 @@ Elevator initialize() {
     return elevator;
 }
 
-/**
- * @brief
- * @param currentFloor
- * @param elevator
- * @return
- */
 int check_orders_over(int currentFloor, Elevator *elevator) {
     int orderOverCurrentFloor = 0;
     for (int i = currentFloor; i < N_FLOORS; ++i) {
@@ -58,12 +49,6 @@ int check_orders_over(int currentFloor, Elevator *elevator) {
     return orderOverCurrentFloor;
 }
 
-/**
- * @brief
- * @param currentFloor
- * @param elevator
- * @return
- */
 int check_orders_under(int currentFloor, Elevator *elevator) {
     int orderUnderCurrentFloor = 0;
     for (int i = currentFloor; i >= 0; --i) {
@@ -80,10 +65,6 @@ int check_orders_under(int currentFloor, Elevator *elevator) {
     return orderUnderCurrentFloor;
 }
 
-/**
- * @brief
- * @param elevator
- */
 void check_if_stop_at_floor_up(Elevator *elevator) {
     int currentFloor = elevio_floorSensor();
     if (currentFloor >= 0) {
@@ -213,11 +194,5 @@ void check_state(Elevator *elevator) {
             }
 
             break;
-
-
-
-
-
     }
-
 }

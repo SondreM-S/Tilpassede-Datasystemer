@@ -1,0 +1,134 @@
+\hypertarget{elevator_8h}{}\doxysection{source/elevator/elevator.h File Reference}
+\label{elevator_8h}\index{source/elevator/elevator.h@{source/elevator/elevator.h}}
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Include dependency graph for elevator.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{elevator_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{elevator_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structElevator}{Elevator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{elevator_8h_a9b4fd374e3626fffe1540f991c00f5c0}\label{elevator_8h_a9b4fd374e3626fffe1540f991c00f5c0}} 
+typedef struct \mbox{\hyperlink{structElevator}{Elevator}} {\bfseries Elevator}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}\label{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}} 
+\mbox{\hyperlink{structElevator}{Elevator}} {\bfseries initialize} ()
+\item 
+void \mbox{\hyperlink{elevator_8h_a622e7e2d908d8bd5ea6e4fe1c54da7c8}{check\+\_\+state}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\item 
+void \mbox{\hyperlink{elevator_8h_aa0ce2bb22bfbdb1d642020199e076be4}{check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\item 
+int \mbox{\hyperlink{elevator_8h_a6320716c8eac2a20f18a7e4a13450c6a}{check\+\_\+orders\+\_\+over}} (int current\+Floor, \mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\item 
+int \mbox{\hyperlink{elevator_8h_a8c5e309179aea2abf9098c07bfbf7153}{check\+\_\+orders\+\_\+under}} (int current\+Floor, \mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\item 
+void \mbox{\hyperlink{elevator_8h_a104fd2b52ae26e6ebbd5ba04ac5db35b}{clear\+\_\+all\+\_\+orders}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{elevator_8h_ab873671c7c633f73dca091c564a910b4}\label{elevator_8h_ab873671c7c633f73dca091c564a910b4}} 
+time\+\_\+t {\bfseries time\+Door\+Opened}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{elevator_8h_aa0ce2bb22bfbdb1d642020199e076be4}\label{elevator_8h_aa0ce2bb22bfbdb1d642020199e076be4}} 
+\index{elevator.h@{elevator.h}!check\_if\_stop\_at\_floor@{check\_if\_stop\_at\_floor}}
+\index{check\_if\_stop\_at\_floor@{check\_if\_stop\_at\_floor}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{check\_if\_stop\_at\_floor()}{check\_if\_stop\_at\_floor()}}
+{\footnotesize\ttfamily void check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevator} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{elevator_8h_a6320716c8eac2a20f18a7e4a13450c6a}\label{elevator_8h_a6320716c8eac2a20f18a7e4a13450c6a}} 
+\index{elevator.h@{elevator.h}!check\_orders\_over@{check\_orders\_over}}
+\index{check\_orders\_over@{check\_orders\_over}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{check\_orders\_over()}{check\_orders\_over()}}
+{\footnotesize\ttfamily int check\+\_\+orders\+\_\+over (\begin{DoxyParamCaption}\item[{int}]{current\+Floor,  }\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Floor} & \\
+\hline
+{\em elevator} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 39 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a8c5e309179aea2abf9098c07bfbf7153}\label{elevator_8h_a8c5e309179aea2abf9098c07bfbf7153}} 
+\index{elevator.h@{elevator.h}!check\_orders\_under@{check\_orders\_under}}
+\index{check\_orders\_under@{check\_orders\_under}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{check\_orders\_under()}{check\_orders\_under()}}
+{\footnotesize\ttfamily int check\+\_\+orders\+\_\+under (\begin{DoxyParamCaption}\item[{int}]{current\+Floor,  }\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Floor} & \\
+\hline
+{\em elevator} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 55 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a622e7e2d908d8bd5ea6e4fe1c54da7c8}\label{elevator_8h_a622e7e2d908d8bd5ea6e4fe1c54da7c8}} 
+\index{elevator.h@{elevator.h}!check\_state@{check\_state}}
+\index{check\_state@{check\_state}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{check\_state()}{check\_state()}}
+{\footnotesize\ttfamily void check\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a104fd2b52ae26e6ebbd5ba04ac5db35b}\label{elevator_8h_a104fd2b52ae26e6ebbd5ba04ac5db35b}} 
+\index{elevator.h@{elevator.h}!clear\_all\_orders@{clear\_all\_orders}}
+\index{clear\_all\_orders@{clear\_all\_orders}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{clear\_all\_orders()}{clear\_all\_orders()}}
+{\footnotesize\ttfamily void clear\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 133 of file elevator.\+c.
+

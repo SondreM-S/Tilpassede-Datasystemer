@@ -5,4 +5,42 @@
 Handling of Button signals.  
 
 
-This graph shows which files directly or indirectly include this file\+:
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{buttons_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{buttons_8h_ad129cf20a64ec1143d718626579b693c}{update\+\_\+order\+\_\+list}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handling of Button signals. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{buttons_8h_ad129cf20a64ec1143d718626579b693c}\label{buttons_8h_ad129cf20a64ec1143d718626579b693c}} 
+\index{buttons.h@{buttons.h}!update\_order\_list@{update\_order\_list}}
+\index{update\_order\_list@{update\_order\_list}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{update\_order\_list()}{update\_order\_list()}}
+{\footnotesize\ttfamily void update\+\_\+order\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & is a pointer to the elevator object from struct \mbox{\hyperlink{structElevator}{Elevator}} in \mbox{\hyperlink{elevator_8h}{elevator.\+h}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 5 of file buttons.\+c.
+

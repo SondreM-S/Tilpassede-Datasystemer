@@ -69,37 +69,52 @@ $(function() {
 <div class="title">elevator.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by student on 07.03.2022.</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../driver/elevio.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef TILPASSEDE_DATASYSTEMER_HEISPROSJEKT_ELEVATOR_H</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define TILPASSEDE_DATASYSTEMER_HEISPROSJEKT_ELEVATOR_H</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#endif //TILPASSEDE_DATASYSTEMER_HEISPROSJEKT_ELEVATOR_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structElevator.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structElevator.html">Elevator</a>{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; <span class="keyword">enum</span> State{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;     movingUp,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;     movingDown,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;     loading,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;     idle,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;     stopped</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; }state;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; <span class="keyword">enum</span> Door{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;     open,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;     closed,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; }door;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; <span class="keywordtype">int</span> lastFloor;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">struct </span><a class="code" href="structElevator.html">Elevator</a> initialize();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> check_state(<span class="keyword">struct</span> <a class="code" href="structElevator.html">Elevator</a> elevator);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<a href="elevator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;time_t timeDoorOpened;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structElevator.html">    8</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structElevator.html">Elevator</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> orderList[N_FLOORS][N_BUTTONS];</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> obstruction;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> lastFloor;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">enum</span> State {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        movingUp,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        movingDown,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        loading,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        idle,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        stopped</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    } state;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">enum</span> Door {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        open,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        closed,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    } door;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">enum</span> LastDirection {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        up,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        down</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    } lastDirection;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structElevator.html">Elevator</a> <a class="code" href="structElevator.html">Elevator</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="structElevator.html">Elevator</a> initialize();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevator_8h.html#a622e7e2d908d8bd5ea6e4fe1c54da7c8">check_state</a>(<a class="code" href="structElevator.html">Elevator</a> *elevator);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevator_8h.html#aa0ce2bb22bfbdb1d642020199e076be4">check_if_stop_at_floor</a>(<a class="code" href="structElevator.html">Elevator</a> *elevator);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevator_8h.html#a6320716c8eac2a20f18a7e4a13450c6a">check_orders_over</a>(<span class="keywordtype">int</span> currentFloor, <a class="code" href="structElevator.html">Elevator</a> *elevator);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevator_8h.html#a8c5e309179aea2abf9098c07bfbf7153">check_orders_under</a>(<span class="keywordtype">int</span> currentFloor, <a class="code" href="structElevator.html">Elevator</a> *elevator);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevator_8h.html#a104fd2b52ae26e6ebbd5ba04ac5db35b">clear_all_orders</a>(<a class="code" href="structElevator.html">Elevator</a> *elevator);</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructElevator_html"><div class="ttname"><a href="structElevator.html">Elevator</a></div><div class="ttdef"><b>Definition:</b> <a href="elevator_8h_source.html#l00011">elevator.h:11</a></div></div>
+<div class="ttc" id="aelevator_8h_html_a8c5e309179aea2abf9098c07bfbf7153"><div class="ttname"><a href="elevator_8h.html#a8c5e309179aea2abf9098c07bfbf7153">check_orders_under</a></div><div class="ttdeci">int check_orders_under(int currentFloor, Elevator *elevator)</div><div class="ttdef"><b>Definition:</b> <a href="elevator_8c_source.html#l00055">elevator.c:55</a></div></div>
+<div class="ttc" id="aelevator_8h_html_a6320716c8eac2a20f18a7e4a13450c6a"><div class="ttname"><a href="elevator_8h.html#a6320716c8eac2a20f18a7e4a13450c6a">check_orders_over</a></div><div class="ttdeci">int check_orders_over(int currentFloor, Elevator *elevator)</div><div class="ttdef"><b>Definition:</b> <a href="elevator_8c_source.html#l00039">elevator.c:39</a></div></div>
+<div class="ttc" id="aelevator_8h_html_aa0ce2bb22bfbdb1d642020199e076be4"><div class="ttname"><a href="elevator_8h.html#aa0ce2bb22bfbdb1d642020199e076be4">check_if_stop_at_floor</a></div><div class="ttdeci">void check_if_stop_at_floor(Elevator *elevator)</div></div>
+<div class="ttc" id="aelevator_8h_html_a622e7e2d908d8bd5ea6e4fe1c54da7c8"><div class="ttname"><a href="elevator_8h.html#a622e7e2d908d8bd5ea6e4fe1c54da7c8">check_state</a></div><div class="ttdeci">void check_state(Elevator *elevator)</div><div class="ttdef"><b>Definition:</b> <a href="elevator_8c_source.html#l00137">elevator.c:137</a></div></div>
+<div class="ttc" id="astructElevator_html"><div class="ttname"><a href="structElevator.html">Elevator</a></div><div class="ttdef"><b>Definition:</b> <a href="elevator_8h_source.html#l00008">elevator.h:8</a></div></div>
+<div class="ttc" id="aelevator_8h_html_a104fd2b52ae26e6ebbd5ba04ac5db35b"><div class="ttname"><a href="elevator_8h.html#a104fd2b52ae26e6ebbd5ba04ac5db35b">clear_all_orders</a></div><div class="ttdeci">void clear_all_orders(Elevator *elevator)</div><div class="ttdef"><b>Definition:</b> <a href="elevator_8c_source.html#l00133">elevator.c:133</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

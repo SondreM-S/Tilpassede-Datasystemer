@@ -3,18 +3,69 @@ https://plantuml.com/class-diagram
 @startuml
 left to right direction
 
-class User {
-  id : INTEGER
+class Buttons {
   ..
-  other_id : INTEGER
+  void update_order_list(Elevator elevator)
 }
 
-class Email {
-  id : INTEGER
+class Door {
   ..
-  user_id : INTEGER
-  address : INTEGER
+  void door_open()
+  void door_close()
 }
 
-User::id *-- Email::user_id
+class Elevio {
+  static int sockfd
+  static pthread_mutex_t sockmtx
+  ..
+  void elevio_init(void)
+  void elevio_motorDirection(MotorDirection dirn)
+  void elevio_buttonLamp(int floor, ButtonType button, int value)
+  void elevio_floorIndicator(int floor)
+  void elevio_doorOpenLamp(int value)
+  void elevio_stopLamp(int value)
+  int elevio_callButton(int floor, ButtonType button)
+  int elevio_floorSensor(void)
+  int elevio_stopButton(void)
+  int elevio_obstruction(void)
+}
+
+class Elevator {
+  ..
+  Elevator intialize()
+  int check_orders_over(int currentFloor, Elevator *elevator)
+  int check_orders_under(int currentFloor, Elevator *elevator)
+  void check_if_stop_at_floor_up(Elevator *elevator)
+  void check_if_stop_at_floor_down(Elevator *elevator) {
+  void clear_order(Elevator *elevator)
+  void clear_all_orders(Elevator *elevator)
+  void check_state(Elevator *elevator)
+  void movingUp(Elevator *elevator)
+  void movingDown(Elevator *elevator)
+  void loading(Elevator *elevator)
+  void idle(Elevator *elevator)
+  void stopped(Elevator *elevator(){
+
+}
+
+class Lights {
+  ..
+  void lights_update_from_orderlist(Elevator *elevator)
+  void set_light_valid_floor_level (Elevator *elevator)
+}
+
+class Main {
+  int main()
+}
+
+Main *-- Buttons
+Main *-- Lights
+Main *-- Elevator
+
+Elevator *-- Door
+Elevator *-- Elevio
+
+Buttons *-- Elevio
+
+Door *-- Elevio
 @enduml

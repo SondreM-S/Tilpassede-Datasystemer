@@ -69,40 +69,31 @@ $(function() {
 <div class="title">lights.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../driver/elevio.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;../buttons/buttons.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> lights[N_FLOORS][N_BUTTONS] = {};</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> lights_clear_floor(<span class="keywordtype">int</span> floor) {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> button = 0; button &lt; N_BUTTONS; button++) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordflow">if</span> (lights[floor][button] == 1) {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;            lights[floor][button] = 0;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            <span class="keywordflow">if</span> (!(floor == 0 &amp;&amp; button == BUTTON_HALL_DOWN) &amp;&amp; !(floor == N_FLOORS -1 &amp;&amp; button == BUTTON_HALL_UP)) {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                elevio_buttonLamp(button, floor, 0);</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//#include &quot;../dependency.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;../driver/elevio.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../elevator/elevator.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="lights_8h.html#a93e65559cf8eef67744a5caaa354e7b6">    5</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="lights_8h.html#a93e65559cf8eef67744a5caaa354e7b6">lights_update_from_orderlist</a>(<a class="code" href="structElevator.html">Elevator</a> *elevator) {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> floor = 0; floor &lt; N_FLOORS; floor++) {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> button = 0; button &lt; N_BUTTONS; button++) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;            <span class="keywordflow">if</span> (elevator-&gt;orderList[floor][button] == 1) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(floor, button, 1);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(floor, button, 0);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            }</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        }</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> lights_clear_all() {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> floor = 0; floor &lt; N_FLOORS; floor++) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        lights_clear_floor(floor);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> lights_update_from_button_signals() {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> floor = 0; floor &lt; N_FLOORS; floor++) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> button = 0; button &lt; N_BUTTONS; button++) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="buttons_8h.html#a04d3931bcb7cea8ab7030e99a0f8ecd3">buttons_get_signal</a>(floor, button) &amp;&amp; lights[floor][button] == 0) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                lights[floor][button] = 1;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                elevio_buttonLamp(button, floor, 1);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="lights_8h.html#a28cb95f110da7fc5632a7ab84020804a">   17</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="lights_8h.html#a28cb95f110da7fc5632a7ab84020804a">set_light_valid_floor_level</a> (<a class="code" href="structElevator.html">Elevator</a> *elevator) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a>(elevator-&gt;lastFloor);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="abuttons_8h_html_a04d3931bcb7cea8ab7030e99a0f8ecd3"><div class="ttname"><a href="buttons_8h.html#a04d3931bcb7cea8ab7030e99a0f8ecd3">buttons_get_signal</a></div><div class="ttdeci">int buttons_get_signal(ButtonType button, int floor)</div><div class="ttdoc">Returns the button list which includes the floor level and the button pressed.</div><div class="ttdef"><b>Definition:</b> <a href="buttons_8c_source.html#l00004">buttons.c:4</a></div></div>
+<div class="ttc" id="alights_8h_html_a93e65559cf8eef67744a5caaa354e7b6"><div class="ttname"><a href="lights_8h.html#a93e65559cf8eef67744a5caaa354e7b6">lights_update_from_orderlist</a></div><div class="ttdeci">void lights_update_from_orderlist(Elevator *elevator)</div><div class="ttdoc">Turns on lights by looping through the elevator orderlist.</div><div class="ttdef"><b>Definition:</b> <a href="lights_8c_source.html#l00005">lights.c:5</a></div></div>
+<div class="ttc" id="astructElevator_html"><div class="ttname"><a href="structElevator.html">Elevator</a></div><div class="ttdef"><b>Definition:</b> <a href="elevator_8h_source.html#l00008">elevator.h:8</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00050">elevio.c:50</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a184a3b9bd68d9f38ada735288059b823"><div class="ttname"><a href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a></div><div class="ttdeci">void elevio_floorIndicator(int floor)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00061">elevio.c:61</a></div></div>
+<div class="ttc" id="alights_8h_html_a28cb95f110da7fc5632a7ab84020804a"><div class="ttname"><a href="lights_8h.html#a28cb95f110da7fc5632a7ab84020804a">set_light_valid_floor_level</a></div><div class="ttdeci">void set_light_valid_floor_level(Elevator *elevator)</div><div class="ttdoc">Sets the elevator floor light to shine on the last visited valid floor. (not -1)</div><div class="ttdef"><b>Definition:</b> <a href="lights_8c_source.html#l00017">lights.c:17</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

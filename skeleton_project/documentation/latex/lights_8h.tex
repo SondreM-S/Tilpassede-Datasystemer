@@ -1,0 +1,67 @@
+\hypertarget{lights_8h}{}\doxysection{source/lights/lights.h File Reference}
+\label{lights_8h}\index{source/lights/lights.h@{source/lights/lights.h}}
+
+
+\mbox{\hyperlink{structElevator}{Elevator}} panel light functionality.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{lights_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lights_8h_a93e65559cf8eef67744a5caaa354e7b6}{lights\+\_\+update\+\_\+from\+\_\+orderlist}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Turns on lights by looping through the elevator orderlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lights_8h_a28cb95f110da7fc5632a7ab84020804a}{set\+\_\+light\+\_\+valid\+\_\+floor\+\_\+level}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Sets the elevator floor light to shine on the last visited valid floor. (not -\/1) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structElevator}{Elevator}} panel light functionality. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lights_8h_a93e65559cf8eef67744a5caaa354e7b6}\label{lights_8h_a93e65559cf8eef67744a5caaa354e7b6}} 
+\index{lights.h@{lights.h}!lights\_update\_from\_orderlist@{lights\_update\_from\_orderlist}}
+\index{lights\_update\_from\_orderlist@{lights\_update\_from\_orderlist}!lights.h@{lights.h}}
+\doxysubsubsection{\texorpdfstring{lights\_update\_from\_orderlist()}{lights\_update\_from\_orderlist()}}
+{\footnotesize\ttfamily void lights\+\_\+update\+\_\+from\+\_\+orderlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Turns on lights by looping through the elevator orderlist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevator\mbox{[}in\mbox{]}} & elevator object which includes attribute orderlist \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 5 of file lights.\+c.
+
+\mbox{\Hypertarget{lights_8h_a28cb95f110da7fc5632a7ab84020804a}\label{lights_8h_a28cb95f110da7fc5632a7ab84020804a}} 
+\index{lights.h@{lights.h}!set\_light\_valid\_floor\_level@{set\_light\_valid\_floor\_level}}
+\index{set\_light\_valid\_floor\_level@{set\_light\_valid\_floor\_level}!lights.h@{lights.h}}
+\doxysubsubsection{\texorpdfstring{set\_light\_valid\_floor\_level()}{set\_light\_valid\_floor\_level()}}
+{\footnotesize\ttfamily void set\+\_\+light\+\_\+valid\+\_\+floor\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Sets the elevator floor light to shine on the last visited valid floor. (not -\/1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevator\mbox{[}in\mbox{]}} & elevator object pointer which includes the last reached floor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file lights.\+c.
+

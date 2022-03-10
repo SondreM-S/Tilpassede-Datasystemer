@@ -78,62 +78,51 @@ $(function() {
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="buttons_8h__dep__incl.png" border="0" usemap="#source_2buttons_2buttons_8hdep" alt=""/></div>
+<map name="source_2buttons_2buttons_8hdep" id="source_2buttons_2buttons_8hdep">
+<area shape="rect" title="Handling of Button signals." alt="" coords="51,5,233,32"/>
+<area shape="rect" href="main_8c.html" title="The main file of the elevator application." alt="" coords="5,87,119,114"/>
+<area shape="rect" href="tests__elevator_8c_source.html" title=" " alt="" coords="143,80,301,121"/>
+</map>
 </div>
 </div>
 <p><a href="buttons_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a04d3931bcb7cea8ab7030e99a0f8ecd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buttons_8h.html#a04d3931bcb7cea8ab7030e99a0f8ecd3">buttons_get_signal</a> (ButtonType button, int floor)</td></tr>
-<tr class="memdesc:a04d3931bcb7cea8ab7030e99a0f8ecd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the button list which includes the floor level and the button pressed.  <a href="buttons_8h.html#a04d3931bcb7cea8ab7030e99a0f8ecd3">More...</a><br /></td></tr>
-<tr class="separator:a04d3931bcb7cea8ab7030e99a0f8ecd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7033f21120ae31254fdede89480b03ec"><td class="memItemLeft" align="right" valign="top"><a id="a7033f21120ae31254fdede89480b03ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buttons_8h.html#a7033f21120ae31254fdede89480b03ec">fetch_button_signal</a> ()</td></tr>
-<tr class="memdesc:a7033f21120ae31254fdede89480b03ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the button signals from the elevator driver (elevio) and updates the button signal list. <br /></td></tr>
-<tr class="separator:a7033f21120ae31254fdede89480b03ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad129cf20a64ec1143d718626579b693c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buttons_8h.html#ad129cf20a64ec1143d718626579b693c">update_order_list</a> (<a class="el" href="structElevator.html">Elevator</a> *elevator)</td></tr>
+<tr class="memdesc:ad129cf20a64ec1143d718626579b693c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator.  <a href="buttons_8h.html#ad129cf20a64ec1143d718626579b693c">More...</a><br /></td></tr>
+<tr class="separator:ad129cf20a64ec1143d718626579b693c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handling of Button signals. </p>
 
 <p class="definition">Definition in file <a class="el" href="buttons_8h_source.html">buttons.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a04d3931bcb7cea8ab7030e99a0f8ecd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04d3931bcb7cea8ab7030e99a0f8ecd3">&#9670;&nbsp;</a></span>buttons_get_signal()</h2>
+<a id="ad129cf20a64ec1143d718626579b693c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad129cf20a64ec1143d718626579b693c">&#9670;&nbsp;</a></span>update_order_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int buttons_get_signal </td>
+          <td class="memname">void update_order_list </td>
           <td>(</td>
-          <td class="paramtype">ButtonType&#160;</td>
-          <td class="paramname"><em>button</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structElevator.html">Elevator</a> *&#160;</td>
+          <td class="paramname"><em>elevator</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>floor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the button list which includes the floor level and the button pressed. </p>
+<p>Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">button</td><td>The called button (BUTTON_HALL_UP, BUTTON_HALL_DOWN, BUTTON_CAB) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>The current floor the button was pressed </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">elevator</td><td>is a pointer to the elevator object from struct <a class="el" href="structElevator.html">Elevator</a> in <a class="el" href="elevator_8h.html">elevator.h</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The button is pressed or not (1 or 0 as value) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="buttons_8c_source.html#l00004">4</a> of file <a class="el" href="buttons_8c_source.html">buttons.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="buttons_8c_source.html#l00005">5</a> of file <a class="el" href="buttons_8c_source.html">buttons.c</a>.</p>
 
 </div>
 </div>

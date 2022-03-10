@@ -1,12 +1,33 @@
 https://plantuml.com/sequence-diagram
 
+
+
 @startuml
-alice -> Stian ++ : hello
-Stian -> Stian ++ : self call
-Stian -> bib ++  #005500 : hello
-Stian -> george ** : create
-return done
-return rc
-Stian -> george !! : delete
-return success
+actor       Actor       as Actor
+participant ElevatorPanel    as ElevatorPanel
+participant Buttons     as Buttons
+participant Elevio    as Elevio
+participant Elevator    as Elevator
+participant Lights      as Lights
+participant Door        as Door
+
+activate ElevatorPanel
+activate Actor
+Actor -> ElevatorPanel : Press Up
+Actor -> ElevatorPanel : Press Down
+deactivate Actor
+
+ElevatorPanel -> Elevio : elevio_callButton()
+deactivate ElevatorPanel
+
+activate Elevio
+Elevio -> Buttons : update_order_list()
+deactivate Elevio
+
+activate Buttons
+Buttons -> Elevator : update_order_list()
+deactivate Buttons
+
+
 @enduml
+
