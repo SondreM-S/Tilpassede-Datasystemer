@@ -5,8 +5,8 @@ https://plantuml.com/sequence-diagram
 @startuml
 actor       Actor       as Actor
 participant ElevatorPanel    as ElevatorPanel
+participant Elevio      as Elevio
 participant Buttons     as Buttons
-participant Elevio    as Elevio
 participant Elevator    as Elevator
 participant Lights      as Lights
 participant Door        as Door
@@ -21,12 +21,22 @@ ElevatorPanel -> Elevio : elevio_callButton()
 deactivate ElevatorPanel
 
 activate Elevio
-Elevio -> Buttons : update_order_list()
+Elevio -> Buttons : check_and_update_elevator_inputs()
 deactivate Elevio
 
 activate Buttons
-Buttons -> Elevator : update_order_list()
+Buttons -> Elevator : check_and_update_elevator_inputs()
 deactivate Buttons
+
+activate Elevator
+Elevator -> Lights :
+deactivate Elevator
+
+activate Lights
+deactivate Lights
+
+activate Door
+deactivate Door
 
 
 @enduml

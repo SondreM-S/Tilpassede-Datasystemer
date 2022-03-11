@@ -5,6 +5,7 @@
 void update_order_list(Elevator *elevator) {
     int stopState = elevio_stopButton();
     elevio_stopLamp(stopState);
+
     if (!stopState){
         for (int floor = 0; floor < N_FLOORS; floor++) {
             for (int button = 0; button < N_BUTTONS; button++) {
@@ -19,6 +20,7 @@ void update_order_list(Elevator *elevator) {
     } else{
         elevator->state = stopped;
     }
+
     elevator->obstruction = elevio_obstruction();
 }
 

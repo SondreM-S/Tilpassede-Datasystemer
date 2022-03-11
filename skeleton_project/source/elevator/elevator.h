@@ -46,14 +46,14 @@ void check_state(Elevator *elevator);
  * @param[in,out] elevator
  */
 
-void check_if_stop_at_floor_over(Elevator *elevator)
+void check_if_stop_at_floor_over(Elevator *elevator);
 
 /**@brief Checks if there is a order at the current floor or in a floor under.
  * If there is no orders change the last direction to up
  *
  * @param[in,out] elevator
  */
-void check_if_stop_at_floor_down(Elevator *elevator)
+void check_if_stop_at_floor_down(Elevator *elevator);
 
 /**@brief Checks if there is any order over the current floor
  *

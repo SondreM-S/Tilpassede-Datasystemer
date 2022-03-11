@@ -170,16 +170,13 @@ void loading_case(Elevator *elevator) {
         door_open();
         elevator->door = open;
         timeDoorOpened = time(NULL);
-
     } else if (currentTime - timeDoorOpened >= 3) {
-        if (elevator->obstruction == 1) {
-            timeDoorOpened = time(NULL);
-        } else {
-            door_close();
-            elevator->door = closed;
-            clear_order(elevator);
-            elevator->state = idle;
-        }
+        door_close();
+
+        elevator->
+                door = closed;
+        elevator->
+                state = idle;
     }
 }
 
