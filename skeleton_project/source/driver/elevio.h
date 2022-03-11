@@ -60,25 +60,25 @@ void elevio_stopLamp(int value);
  * @brief Function for reading if a button is pressed or not by specifying what button to read and receiving a 0 or 1
  * @param floor[in] integer to represent what floor is being checked
  * @param button[in] enum to show what button type is pressed
- * @return buf[out] integer that represents if the specified button is pressed or not by 0 or 1
+ * @return integer that represents if the specified button is pressed or not by 1 or 0
  */
 int elevio_callButton(int floor, ButtonType button);
 
 /**
  * @brief Function for reading the sensor output for what floor the elevator is at, or if the elevator is between floors
- * @return buf[out] integer representing the current position of the elevator (-1 for between floors)
+ * @return integer representing the current position of the elevator (-1 for between floors)
  */
 int elevio_floorSensor(void);
 
 /**
- * @brief
- * @return
+ * @brief Function for reading the button state of the stop button
+ * @return integer representing if the button is pressed or not by 1 or 0
  */
 int elevio_stopButton(void);
 
 /**
- * @brief
- * @return
+ * @brief Function for reading if the obstruction switch is turned on or off
+ * @return integer represening if the switch is on or off by 1 or 0.
  */
 int elevio_obstruction(void);
 

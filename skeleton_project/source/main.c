@@ -32,7 +32,7 @@ int main() {
         //printf("last floor is: %d", elevator.lastFloor);
 
 //        printf(button);
-        update_order_list(&elevator); // Update orders in the elevator object
+        check_and_update_elevator_inputs(&elevator); // Update orders in the elevator object
         lights_update_from_orderlist(&elevator);
         set_light_valid_floor_level(&elevator);
         check_state(&elevator);
@@ -86,7 +86,6 @@ int main() {
 //        }
 
         nanosleep(&(struct timespec) {0, 20 * 1000 * 1000}, NULL);
-
     }
 
     return 0;

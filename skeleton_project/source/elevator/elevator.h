@@ -5,6 +5,7 @@
 #include <time.h>
 
 time_t timeDoorOpened;
+
 struct Elevator {
     int orderList[N_FLOORS][N_BUTTONS];
     int obstruction;

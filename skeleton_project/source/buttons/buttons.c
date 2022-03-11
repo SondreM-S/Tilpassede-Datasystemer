@@ -2,7 +2,7 @@
 #include "../elevator/elevator.h"
 
 
-void update_order_list(Elevator *elevator) {
+void check_and_update_elevator_inputs(Elevator *elevator) {
     int stopState = elevio_stopButton();
     elevio_stopLamp(stopState);
 

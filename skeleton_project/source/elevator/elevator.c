@@ -88,7 +88,6 @@ void check_if_stop_at_floor_up(Elevator *elevator) {
 
 void check_if_stop_at_floor_down(Elevator *elevator) {
     int currentFloor = elevio_floorSensor();
-
     if (currentFloor >= 0) {
         elevator->lastFloor = currentFloor;
         if (elevator->orderList[currentFloor][1] == 1 || elevator->orderList[currentFloor][2] == 1) {
@@ -166,7 +165,9 @@ void moving_down_case(Elevator *elevator) {
 void loading_case(Elevator *elevator) {
     elevio_motorDirection(0);
     time_t currentTime = time(NULL);
-    if (elevator->door == closed) {
+    if ((elevator->obstruction == 1) && (elevator->door == open)) {
+        timeDoorOpened = time(NULL);
+    } else if (elevator->door == closed) {
         door_open();
         elevator->door = open;
         timeDoorOpened = time(NULL);

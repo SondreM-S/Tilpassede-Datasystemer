@@ -9,7 +9,7 @@
  * The function also checks the obstruction status and sets the obstruction value in elevator.
  * @param[in,out] elevator is a pointer to the elevator object from struct Elevator in elevator.h
  */
-void update_order_list(Elevator *elevator);
+void check_and_update_elevator_inputs(Elevator *elevator);
 
 
 
