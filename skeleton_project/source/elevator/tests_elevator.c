@@ -7,21 +7,6 @@
 
 void test_clear_all_orders(Elevator *elevator);
 
-{
-
-void test_longjmp(void) {
-    jmp_buf buf;
-    int i;
-
-    i = setjmp(buf);
-    if (i == 0) {
-        run_other_func();
-        CU_PASS("run_other_func() succeeded.");
-    } else
-        CU_FAIL("run_other_func() issued longjmp.");
-}
-
-
 Elevator elevator;
 
 void test_clear_all_orders() {

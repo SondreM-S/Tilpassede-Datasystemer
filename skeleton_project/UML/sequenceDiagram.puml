@@ -5,37 +5,69 @@ https://plantuml.com/sequence-diagram
 @startuml
 actor       Actor       as Actor
 participant ElevatorPanel    as ElevatorPanel
-participant Elevio      as Elevio
-participant Buttons     as Buttons
-participant Elevator    as Elevator
+participant ElevatorCab as ElevatorCab
+participant Driver      as Driver
 participant Lights      as Lights
 participant Door        as Door
+participant Buttons     as Buttons
+participant Elevator    as Elevator
 
-activate ElevatorPanel
+
 activate Actor
-Actor -> ElevatorPanel : Press Up
-Actor -> ElevatorPanel : Press Down
+activate Buttons
+Driver          -> Buttons : elevio_callButton()
+activate Driver
+    ElevatorPanel   -> Driver
+    activate ElevatorPanel
+        Actor           -> ElevatorPanel : Button pressed
+    deactivate ElevatorPanel
+deactivate Driver
+Driver          -> Buttons : elevio_stopButton()
+activate Driver
+    ElevatorPanel   -> Driver
+    activate ElevatorPanel
+        Actor           -> ElevatorPanel : Stop button pressed
+    deactivate ElevatorPanel
+deactivate Driver
+Driver          -> Buttons : elevio_obstruction()
+activate Driver
+    ElevatorPanel   -> Driver
+    activate ElevatorPanel
+        Actor           -> ElevatorPanel : Obstruction activated
+    deactivate ElevatorPanel
+deactivate Driver
 deactivate Actor
 
-ElevatorPanel -> Elevio : elevio_callButton()
-deactivate ElevatorPanel
-
-activate Elevio
-Elevio -> Buttons : check_and_update_elevator_inputs()
-deactivate Elevio
-
-activate Buttons
-Buttons -> Elevator : check_and_update_elevator_inputs()
+Buttons         -> Elevator : Check and update elevator inputs
 deactivate Buttons
 
+activate Door
 activate Elevator
-Elevator -> Lights :
-deactivate Elevator
-
+Elevator        -> Door : open_door()
+Elevator        -> Door : close_door()
 activate Lights
+Elevator        -> Lights : Lights update from orderList
+Elevator        -> Lights : Set light valid floor level
+
+Elevator        -> Driver : Set motor direction
+    activate Driver
+    Driver      -> ElevatorCab : Set motor direction
+        activate ElevatorCab
+        deactivate ElevatorCab
+    deactivate Driver
+    deactivate Driver
+
+Lights          -> Driver : elevio_buttonLamp()
+activate Driver
+deactivate Driver
+Lights          -> Driver : elevio_floorIndicator()
+activate Driver
+deactivate Driver
 deactivate Lights
 
-activate Door
+Door            -> Driver : elevio_doorOpenLamp()
+activate Driver
+deactivate Driver
 deactivate Door
 
 
