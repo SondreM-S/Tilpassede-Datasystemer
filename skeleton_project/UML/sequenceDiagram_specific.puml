@@ -1,0 +1,188 @@
+https://plantuml.com/sequence-diagram
+
+
+
+@startuml
+actor       Actor       as Actor
+participant ElevatorPanel    as ElevatorPanel
+participant ElevatorCab as ElevatorCab
+participant Driver      as Driver
+participant Lights      as Lights
+participant Door        as Door
+participant Buttons     as Buttons
+participant Elevator    as Elevator
+
+
+activate Actor
+activate Buttons
+Driver          -> Buttons : elevio_callButton()
+activate Driver
+    ElevatorPanel   -> Driver : Signal is sent
+    activate ElevatorPanel
+        Actor           -> ElevatorPanel : Button pressed to go up \nfrom the 1st floor
+    deactivate ElevatorPanel
+deactivate Driver
+deactivate Actor
+
+Buttons         -> Elevator : Check and update \nelevator inputs
+deactivate Buttons
+
+
+activate Elevator
+activate Lights
+Elevator        -> Lights : Lights update from orderList
+Elevator        -> Lights : Set light valid floor level
+Elevator        -> Driver : elevio_motorDirection(down)
+activate Driver
+Driver      -> ElevatorCab : Set motor direction \nto moving down
+activate ElevatorCab
+deactivate ElevatorCab
+deactivate Driver
+deactivate Elevator
+Lights          -> Driver : elevio_buttonLamp()
+activate Driver
+Driver -> ElevatorPanel : Turn on light
+activate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Driver
+Lights          -> Driver : elevio_floorIndicator()
+activate Driver
+Driver -> ElevatorPanel : Set floor light
+activate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Driver
+deactivate Lights
+
+
+
+activate ElevatorCab
+ElevatorCab -> Driver : Signal that a valid \nfloor is reached (1st floor)
+activate Driver
+Driver -> Elevator : check_if_stop_at_floor_down()
+activate Elevator
+
+deactivate Driver
+deactivate ElevatorCab
+
+Elevator -> Door : openDoor()
+activate Door
+
+activate Driver
+Elevator -> Driver : elevio_motorDirection(stop)
+Door            -> Driver : elevio_doorOpenLamp()
+
+
+deactivate Door
+Driver -> ElevatorPanel : Open door
+activate ElevatorPanel
+deactivate ElevatorPanel
+Driver -> ElevatorCab : Stop movement
+activate ElevatorCab
+deactivate ElevatorCab
+deactivate Driver
+
+
+
+activate Actor
+activate Buttons
+activate ElevatorPanel
+Driver          -> Buttons : elevio_callButton()
+activate Driver
+ElevatorPanel   -> Driver : Signal is sent
+deactivate Driver
+Elevator -> Door : Close door
+activate Door
+Door -> Driver : elevio_doorOpenLamp
+activate Driver
+Driver -> ElevatorPanel : Close door
+activate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Door
+
+
+
+
+deactivate Driver
+deactivate Elevator
+
+
+Actor -> ElevatorPanel : Has walked into elevator, \nbutton pressed to go to \nthe 4th floor    deactivate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Driver
+deactivate Actor
+
+Buttons         -> Elevator : Check and update \nelevator inputs
+deactivate Buttons
+
+
+activate Elevator
+activate Lights
+Elevator        -> Lights : Lights update from orderList
+Elevator        -> Lights : Set light valid floor level
+Elevator        -> Driver : elevio_motorDirection(down)
+activate Driver
+Driver      -> ElevatorCab : Set motor direction \nto moving down
+activate ElevatorCab
+deactivate ElevatorCab
+deactivate Driver
+deactivate Elevator
+Lights          -> Driver : elevio_buttonLamp()
+activate Driver
+Driver -> ElevatorPanel : Turn on light
+activate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Driver
+Lights          -> Driver : elevio_floorIndicator()
+activate Driver
+Driver -> ElevatorPanel : Set floor light
+activate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Driver
+deactivate Lights
+
+
+
+activate ElevatorCab
+ElevatorCab -> Driver : Signal that a valid \nfloor is reached (1st floor)
+activate Driver
+Driver -> Elevator : check_if_stop_at_floor_down()
+activate Elevator
+
+deactivate Driver
+deactivate ElevatorCab
+
+Elevator -> Door : openDoor()
+activate Door
+
+activate Driver
+Elevator -> Driver : elevio_motorDirection(stop)
+Door -> Driver : elevio_doorOpenLamp()
+
+
+deactivate Door
+Elevator -> Door : Close door
+
+activate Door
+
+Door -> Driver : elevio_doorOpenLamp()
+activate Driver
+Driver -> ElevatorPanel : Close door
+activate ElevatorPanel
+deactivate ElevatorPanel
+deactivate Driver
+deactivate Door
+deactivate Elevator
+Driver -> ElevatorPanel : Open door
+activate ElevatorPanel
+deactivate ElevatorPanel
+Driver -> ElevatorCab : Stop movement
+activate ElevatorCab
+deactivate ElevatorCab
+deactivate Driver
+
+
+
+
+
+@enduml
+
