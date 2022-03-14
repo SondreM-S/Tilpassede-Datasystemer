@@ -79,7 +79,6 @@ void check_if_stop_at_floor_up(Elevator *elevator) {
             } else if (orderOver == 1) {
                 elevator->state = movingUp;
             }
-
         }
     }
 }
@@ -160,7 +159,6 @@ void moving_down_case(Elevator *elevator) {
     elevio_motorDirection(-1);
     elevator->lastDirection = down;
     check_if_stop_at_floor_down(elevator);
-
 }
 
 void loading_case(Elevator *elevator) {
@@ -175,7 +173,6 @@ void loading_case(Elevator *elevator) {
         timeDoorOpened = time(NULL);
     } else if (currentTime - timeDoorOpened >= 3) {
         door_close();
-
         elevator->
                 door = closed;
         elevator->
@@ -209,7 +206,6 @@ void idle_case(Elevator *elevator) {
             } else {
                 elevator->state = idle;
             }
-
         }
     } else {
         if (elevator->lastDirection == up) {
@@ -234,6 +230,5 @@ void stopped_case(Elevator *elevator) {
         door_open();
     }
     elevator->state = idle;
-
 }
 
