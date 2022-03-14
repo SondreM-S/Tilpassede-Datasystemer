@@ -1,5 +1,5 @@
 /**@file
- * @brief
+ * @brief The elevator module contains the elevator struct and all the functions and logic for the state machine.
  */
 
 #include <time.h>
