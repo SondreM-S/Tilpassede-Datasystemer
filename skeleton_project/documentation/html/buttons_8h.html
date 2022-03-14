@@ -79,9 +79,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="buttons_8h__dep__incl.png" border="0" usemap="#source_2buttons_2buttons_8hdep" alt=""/></div>
 <map name="source_2buttons_2buttons_8hdep" id="source_2buttons_2buttons_8hdep">
-<area shape="rect" title="Handling of Button signals." alt="" coords="51,5,233,32"/>
-<area shape="rect" href="main_8c.html" title="The main file of the elevator application." alt="" coords="5,87,119,114"/>
-<area shape="rect" href="tests__elevator_8c_source.html" title=" " alt="" coords="143,80,301,121"/>
+<area shape="rect" title="Handling of Button signals." alt="" coords="5,5,188,32"/>
+<area shape="rect" href="main_8c.html" title="The main file of the elevator application." alt="" coords="40,80,153,107"/>
 </map>
 </div>
 </div>
@@ -89,23 +88,23 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad129cf20a64ec1143d718626579b693c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buttons_8h.html#ad129cf20a64ec1143d718626579b693c">update_order_list</a> (<a class="el" href="structElevator.html">Elevator</a> *elevator)</td></tr>
-<tr class="memdesc:ad129cf20a64ec1143d718626579b693c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator.  <a href="buttons_8h.html#ad129cf20a64ec1143d718626579b693c">More...</a><br /></td></tr>
-<tr class="separator:ad129cf20a64ec1143d718626579b693c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4071bc889151ce195c84c8b90ef4dcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buttons_8h.html#ab4071bc889151ce195c84c8b90ef4dcd">check_and_update_elevator_inputs</a> (<a class="el" href="structElevator.html">Elevator</a> *elevator)</td></tr>
+<tr class="memdesc:ab4071bc889151ce195c84c8b90ef4dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator.  <a href="buttons_8h.html#ab4071bc889151ce195c84c8b90ef4dcd">More...</a><br /></td></tr>
+<tr class="separator:ab4071bc889151ce195c84c8b90ef4dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handling of Button signals. </p>
 
 <p class="definition">Definition in file <a class="el" href="buttons_8h_source.html">buttons.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ad129cf20a64ec1143d718626579b693c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad129cf20a64ec1143d718626579b693c">&#9670;&nbsp;</a></span>update_order_list()</h2>
+<a id="ab4071bc889151ce195c84c8b90ef4dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4071bc889151ce195c84c8b90ef4dcd">&#9670;&nbsp;</a></span>check_and_update_elevator_inputs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void update_order_list </td>
+          <td class="memname">void check_and_update_elevator_inputs </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structElevator.html">Elevator</a> *&#160;</td>
           <td class="paramname"><em>elevator</em></td><td>)</td>
@@ -117,7 +116,7 @@ Functions</h2></td></tr>
 <p>Checks the input status of all buttons. Unless the stop button is pressed, this will read all floor buttons and add the pressed buttons to the order list. If the stop button is pressed, the state of the elevator is set to stop, and the function will end. The function also checks the obstruction status and sets the obstruction value in elevator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">elevator</td><td>is a pointer to the elevator object from struct <a class="el" href="structElevator.html">Elevator</a> in <a class="el" href="elevator_8h.html">elevator.h</a> </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">elevator</td><td>is a pointer to the elevator object from struct <a class="el" href="structElevator.html">Elevator</a> in <a class="el" href="elevator_8h.html" title="The elevator module contains the elevator struct and all the functions and logic for the state machin...">elevator.h</a> </td></tr>
   </table>
   </dd>
 </dl>

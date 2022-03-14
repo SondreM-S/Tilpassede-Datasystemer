@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['lights_5fupdate_5ffrom_5forderlist_51',['lights_update_from_orderlist',['../lights_8h.html#a93e65559cf8eef67744a5caaa354e7b6',1,'lights.c']]]
+  ['idle_5fcase_60',['idle_case',['../elevator_8h.html#afc3a96e33334ad447976a08ee5b331f4',1,'elevator.c']]],
+  ['initialize_61',['initialize',['../elevator_8h.html#a3694ae4d5f5183ad33929a8354d7fe30',1,'elevator.c']]]
 ];

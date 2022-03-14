@@ -1,14 +1,21 @@
 \hypertarget{elevator_8h}{}\doxysection{source/elevator/elevator.h File Reference}
 \label{elevator_8h}\index{source/elevator/elevator.h@{source/elevator/elevator.h}}
+
+
+The elevator module contains the elevator struct and all the functions and logic for the state machine.  
+
+
 {\ttfamily \#include $<$time.\+h$>$}\newline
-Include dependency graph for elevator.\+h\+:\nopagebreak
+Include dependency graph for elevator.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=225pt]{elevator_8h__incl}
+\includegraphics[width=224pt]{elevator_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -29,19 +36,30 @@ typedef struct \mbox{\hyperlink{structElevator}{Elevator}} {\bfseries Elevator}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}\label{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}} 
-\mbox{\hyperlink{structElevator}{Elevator}} {\bfseries initialize} ()
-\item 
+\mbox{\hyperlink{structElevator}{Elevator}} \mbox{\hyperlink{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the elevator struct and finds a valid floor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevator_8h_a622e7e2d908d8bd5ea6e4fe1c54da7c8}{check\+\_\+state}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
-\item 
-void \mbox{\hyperlink{elevator_8h_aa0ce2bb22bfbdb1d642020199e076be4}{check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
-\item 
+\begin{DoxyCompactList}\small\item\em Check the current state for the elevator, and run the state specific functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_a4ab7cd94a46f4ebb7fe21a71a6176d00}{check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor\+\_\+over}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Checks if there is a order at the current floor or in a floor over. If there is no orders there change the last direction to down. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_ab4fe959f659d59c033092fc7d968099d}{check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor\+\_\+down}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Checks if there is a order at the current floor or in a floor under. If there is no orders change the last direction to up. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{elevator_8h_a6320716c8eac2a20f18a7e4a13450c6a}{check\+\_\+orders\+\_\+over}} (int current\+Floor, \mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if there is any order over the current floor. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{elevator_8h_a8c5e309179aea2abf9098c07bfbf7153}{check\+\_\+orders\+\_\+under}} (int current\+Floor, \mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if there is any order under the current floor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevator_8h_a104fd2b52ae26e6ebbd5ba04ac5db35b}{clear\+\_\+all\+\_\+orders}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em clears all the orders from the elevator orderlist \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_a07ce774b4c3ff15f10026d09dedbcfb3}{moving\+\_\+up\+\_\+case}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Moves the elevator up and check if it needs to stop at the current floor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_aa4df180ca931e0dbcf669e3c6be7d6a6}{moving\+\_\+down\+\_\+case}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Moves the elevator down and check if it needs to stop at the current floor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_a420c5c9d6c5a8f474e9705d87d21b710}{loading\+\_\+case}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em Open the door wait for 3s and then closes the door. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_afc3a96e33334ad447976a08ee5b331f4}{idle\+\_\+case}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em checks if there is any new orders \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_8h_a37a2f31528debcdb0600d2cb67d2d196}{stopped\+\_\+case}} (\mbox{\hyperlink{structElevator}{Elevator}} $\ast$elevator)
+\begin{DoxyCompactList}\small\item\em If the stop button is pressed stop the elevator and clears the orderlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,16 +68,44 @@ time\+\_\+t {\bfseries time\+Door\+Opened}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+The elevator module contains the elevator struct and all the functions and logic for the state machine. 
+
+
+
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{elevator_8h_aa0ce2bb22bfbdb1d642020199e076be4}\label{elevator_8h_aa0ce2bb22bfbdb1d642020199e076be4}} 
-\index{elevator.h@{elevator.h}!check\_if\_stop\_at\_floor@{check\_if\_stop\_at\_floor}}
-\index{check\_if\_stop\_at\_floor@{check\_if\_stop\_at\_floor}!elevator.h@{elevator.h}}
-\doxysubsubsection{\texorpdfstring{check\_if\_stop\_at\_floor()}{check\_if\_stop\_at\_floor()}}
-{\footnotesize\ttfamily void check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{elevator_8h_ab4fe959f659d59c033092fc7d968099d}\label{elevator_8h_ab4fe959f659d59c033092fc7d968099d}} 
+\index{elevator.h@{elevator.h}!check\_if\_stop\_at\_floor\_down@{check\_if\_stop\_at\_floor\_down}}
+\index{check\_if\_stop\_at\_floor\_down@{check\_if\_stop\_at\_floor\_down}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{check\_if\_stop\_at\_floor\_down()}{check\_if\_stop\_at\_floor\_down()}}
+{\footnotesize\ttfamily void check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor\+\_\+down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
 
 
-\begin{DoxyParams}{Parameters}
-{\em elevator} & \\
+
+Checks if there is a order at the current floor or in a floor under. If there is no orders change the last direction to up. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a4ab7cd94a46f4ebb7fe21a71a6176d00}\label{elevator_8h_a4ab7cd94a46f4ebb7fe21a71a6176d00}} 
+\index{elevator.h@{elevator.h}!check\_if\_stop\_at\_floor\_over@{check\_if\_stop\_at\_floor\_over}}
+\index{check\_if\_stop\_at\_floor\_over@{check\_if\_stop\_at\_floor\_over}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{check\_if\_stop\_at\_floor\_over()}{check\_if\_stop\_at\_floor\_over()}}
+{\footnotesize\ttfamily void check\+\_\+if\+\_\+stop\+\_\+at\+\_\+floor\+\_\+over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Checks if there is a order at the current floor or in a floor over. If there is no orders there change the last direction to down. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{elevator_8h_a6320716c8eac2a20f18a7e4a13450c6a}\label{elevator_8h_a6320716c8eac2a20f18a7e4a13450c6a}} 
@@ -69,18 +115,22 @@ time\+\_\+t {\bfseries time\+Door\+Opened}
 {\footnotesize\ttfamily int check\+\_\+orders\+\_\+over (\begin{DoxyParamCaption}\item[{int}]{current\+Floor,  }\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
 
 
-\begin{DoxyParams}{Parameters}
-{\em current\+Floor} & \\
+
+Checks if there is any order over the current floor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em current\+Floor} & \\
 \hline
-{\em elevator} & \\
+\mbox{\texttt{ in}}  & {\em elevator} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+0 if no orders over current floor, 1 if there is orders over current floor 
 \end{DoxyReturn}
 
 
-Definition at line 39 of file elevator.\+c.
+Definition at line 35 of file elevator.\+c.
 
 \mbox{\Hypertarget{elevator_8h_a8c5e309179aea2abf9098c07bfbf7153}\label{elevator_8h_a8c5e309179aea2abf9098c07bfbf7153}} 
 \index{elevator.h@{elevator.h}!check\_orders\_under@{check\_orders\_under}}
@@ -89,18 +139,22 @@ Definition at line 39 of file elevator.\+c.
 {\footnotesize\ttfamily int check\+\_\+orders\+\_\+under (\begin{DoxyParamCaption}\item[{int}]{current\+Floor,  }\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
 
 
-\begin{DoxyParams}{Parameters}
-{\em current\+Floor} & \\
+
+Checks if there is any order under the current floor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em current\+Floor} & \\
 \hline
-{\em elevator} & \\
+\mbox{\texttt{ in}}  & {\em elevator} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+0 if no orders under current floor, 1 if there is orders under current floor 
 \end{DoxyReturn}
 
 
-Definition at line 55 of file elevator.\+c.
+Definition at line 51 of file elevator.\+c.
 
 \mbox{\Hypertarget{elevator_8h_a622e7e2d908d8bd5ea6e4fe1c54da7c8}\label{elevator_8h_a622e7e2d908d8bd5ea6e4fe1c54da7c8}} 
 \index{elevator.h@{elevator.h}!check\_state@{check\_state}}
@@ -109,13 +163,17 @@ Definition at line 55 of file elevator.\+c.
 {\footnotesize\ttfamily void check\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
 
 
-\begin{DoxyParams}{Parameters}
-{\em elevator} & \\
+
+Check the current state for the elevator, and run the state specific functions. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 137 of file elevator.\+c.
+Definition at line 131 of file elevator.\+c.
 
 \mbox{\Hypertarget{elevator_8h_a104fd2b52ae26e6ebbd5ba04ac5db35b}\label{elevator_8h_a104fd2b52ae26e6ebbd5ba04ac5db35b}} 
 \index{elevator.h@{elevator.h}!clear\_all\_orders@{clear\_all\_orders}}
@@ -124,11 +182,127 @@ Definition at line 137 of file elevator.\+c.
 {\footnotesize\ttfamily void clear\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
 
 
-\begin{DoxyParams}{Parameters}
-{\em elevator} & \\
+
+clears all the orders from the elevator orderlist 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 133 of file elevator.\+c.
+Definition at line 127 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_afc3a96e33334ad447976a08ee5b331f4}\label{elevator_8h_afc3a96e33334ad447976a08ee5b331f4}} 
+\index{elevator.h@{elevator.h}!idle\_case@{idle\_case}}
+\index{idle\_case@{idle\_case}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{idle\_case()}{idle\_case()}}
+{\footnotesize\ttfamily void idle\+\_\+case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+checks if there is any new orders 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 186 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}\label{elevator_8h_a3694ae4d5f5183ad33929a8354d7fe30}} 
+\index{elevator.h@{elevator.h}!initialize@{initialize}}
+\index{initialize@{initialize}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structElevator}{Elevator}} initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the elevator struct and finds a valid floor. 
+
+\begin{DoxyReturn}{Returns}
+elevator 
+\end{DoxyReturn}
+
+
+Definition at line 9 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a420c5c9d6c5a8f474e9705d87d21b710}\label{elevator_8h_a420c5c9d6c5a8f474e9705d87d21b710}} 
+\index{elevator.h@{elevator.h}!loading\_case@{loading\_case}}
+\index{loading\_case@{loading\_case}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{loading\_case()}{loading\_case()}}
+{\footnotesize\ttfamily void loading\+\_\+case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Open the door wait for 3s and then closes the door. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 166 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_aa4df180ca931e0dbcf669e3c6be7d6a6}\label{elevator_8h_aa4df180ca931e0dbcf669e3c6be7d6a6}} 
+\index{elevator.h@{elevator.h}!moving\_down\_case@{moving\_down\_case}}
+\index{moving\_down\_case@{moving\_down\_case}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{moving\_down\_case()}{moving\_down\_case()}}
+{\footnotesize\ttfamily void moving\+\_\+down\+\_\+case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Moves the elevator down and check if it needs to stop at the current floor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 158 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a07ce774b4c3ff15f10026d09dedbcfb3}\label{elevator_8h_a07ce774b4c3ff15f10026d09dedbcfb3}} 
+\index{elevator.h@{elevator.h}!moving\_up\_case@{moving\_up\_case}}
+\index{moving\_up\_case@{moving\_up\_case}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{moving\_up\_case()}{moving\_up\_case()}}
+{\footnotesize\ttfamily void moving\+\_\+up\+\_\+case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Moves the elevator up and check if it needs to stop at the current floor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 151 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a37a2f31528debcdb0600d2cb67d2d196}\label{elevator_8h_a37a2f31528debcdb0600d2cb67d2d196}} 
+\index{elevator.h@{elevator.h}!stopped\_case@{stopped\_case}}
+\index{stopped\_case@{stopped\_case}!elevator.h@{elevator.h}}
+\doxysubsubsection{\texorpdfstring{stopped\_case()}{stopped\_case()}}
+{\footnotesize\ttfamily void stopped\+\_\+case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structElevator}{Elevator}} $\ast$}]{elevator }\end{DoxyParamCaption})}
+
+
+
+If the stop button is pressed stop the elevator and clears the orderlist. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em elevator} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 229 of file elevator.\+c.
 

@@ -44,23 +44,23 @@ enum {\bfseries Button\+Type} \{ {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+H\+A\+L\+L\+
 void \mbox{\hyperlink{elevio_8h_acec5e6d14134b881216887fe15aca830}{elevio\+\_\+init}} (void)
 \begin{DoxyCompactList}\small\item\em Intializes elevator. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevio_8h_ab2e6dcf199387c1dd6f78e2bf6fff56e}{elevio\+\_\+motor\+Direction}} (Motor\+Direction dirn)
-\begin{DoxyCompactList}\small\item\em Sets motor direction of the elevator. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets motor direction of the elevator by sending the dirn enumerate over tcp connection to elevator server. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevio_8h_a182079eb4c29f71ff3b5049a2fd082a3}{elevio\+\_\+button\+Lamp}} (int floor, Button\+Type button, int value)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for setting the ligth of a specific floor button. Specifies floor, button type, and if it is on or off. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevio_8h_a184a3b9bd68d9f38ada735288059b823}{elevio\+\_\+floor\+Indicator}} (int floor)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for setting the floor indicator based on input. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevio_8h_a7784247f816e8beee3a0538f070d9357}{elevio\+\_\+door\+Open\+Lamp}} (int value)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for setting the door light to either on or off based on the boolean value 0 or 1. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{elevio_8h_ac0411a180087d6ac13a3d97eda809ba0}{elevio\+\_\+stop\+Lamp}} (int value)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for turning on or off the pause button lamp. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{elevio_8h_a2485d7d293f03756a852ee1f796b9e1f}{elevio\+\_\+call\+Button}} (int floor, Button\+Type button)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for reading if a button is pressed or not by specifying what button to read and receiving a 0 or 1. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{elevio_8h_a6c30a3c0241ebf37a9014679e1bf288d}{elevio\+\_\+floor\+Sensor}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for reading the sensor output for what floor the elevator is at, or if the elevator is between floors. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{elevio_8h_a73cf5844bdae806dc8d0afa3e0edab70}{elevio\+\_\+stop\+Button}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Function for reading the button state of the stop button. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{elevio_8h_a96c87bf2164a6aa64d116f6137b8ee78}{elevio\+\_\+obstruction}} (void)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function for reading if the obstruction switch is turned on or off. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -76,12 +76,16 @@ All driver functions for the elevator server.
 {\footnotesize\ttfamily void elevio\+\_\+button\+Lamp (\begin{DoxyParamCaption}\item[{int}]{floor,  }\item[{Button\+Type}]{button,  }\item[{int}]{value }\end{DoxyParamCaption})}
 
 
+
+Function for setting the ligth of a specific floor button. Specifies floor, button type, and if it is on or off. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em floor} & \\
+{\em floor\mbox{[}in\mbox{]}} & int which determines which floor the button is on \\
 \hline
-{\em button} & \\
+{\em button\mbox{[}in\mbox{]}} & Enum which specifies what type of button the lights point to \\
 \hline
-{\em value} & \\
+{\em value\mbox{[}in\mbox{]}} & Int which states if the light is on or off represented by 0 or 1 \\
 \hline
 \end{DoxyParams}
 
@@ -95,14 +99,18 @@ Definition at line 50 of file elevio.\+c.
 {\footnotesize\ttfamily int elevio\+\_\+call\+Button (\begin{DoxyParamCaption}\item[{int}]{floor,  }\item[{Button\+Type}]{button }\end{DoxyParamCaption})}
 
 
+
+Function for reading if a button is pressed or not by specifying what button to read and receiving a 0 or 1. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em floor} & \\
+{\em floor\mbox{[}in\mbox{]}} & integer to represent what floor is being checked \\
 \hline
-{\em button} & \\
+{\em button\mbox{[}in\mbox{]}} & enum to show what button type is pressed \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+integer that represents if the specified button is pressed or not by 1 or 0 
 \end{DoxyReturn}
 
 
@@ -115,8 +123,12 @@ Definition at line 82 of file elevio.\+c.
 {\footnotesize\ttfamily void elevio\+\_\+door\+Open\+Lamp (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
 
 
+
+Function for setting the door light to either on or off based on the boolean value 0 or 1. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em value} & \\
+{\em value\mbox{[}in\mbox{]}} & integer representing if the door is open or closed by 0 or 1 \\
 \hline
 \end{DoxyParams}
 
@@ -130,8 +142,12 @@ Definition at line 70 of file elevio.\+c.
 {\footnotesize\ttfamily void elevio\+\_\+floor\+Indicator (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
 
 
+
+Function for setting the floor indicator based on input. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em floor} & \\
+{\em floor\mbox{[}in\mbox{]}} & int to specify which floor the light is on \\
 \hline
 \end{DoxyParams}
 
@@ -144,8 +160,12 @@ Definition at line 61 of file elevio.\+c.
 \doxysubsubsection{\texorpdfstring{elevio\_floorSensor()}{elevio\_floorSensor()}}
 {\footnotesize\ttfamily int elevio\+\_\+floor\+Sensor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\begin{DoxyReturn}{Returns}
 
+
+Function for reading the sensor output for what floor the elevator is at, or if the elevator is between floors. 
+
+\begin{DoxyReturn}{Returns}
+integer representing the current position of the elevator (-\/1 for between floors) 
 \end{DoxyReturn}
 
 
@@ -159,11 +179,11 @@ Definition at line 92 of file elevio.\+c.
 
 
 
-Sets motor direction of the elevator. 
+Sets motor direction of the elevator by sending the dirn enumerate over tcp connection to elevator server. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em dirn} & Takes input parameter of the direction of the elevator (-\/1 is down, 0 is stop, 1 is up) \\
+{\em dirn\mbox{[}in\mbox{]}} & Takes input parameter of the direction of the elevator (-\/1 is down, 0 is stop, 1 is up) \\
 \hline
 \end{DoxyParams}
 
@@ -176,8 +196,12 @@ Definition at line 44 of file elevio.\+c.
 \doxysubsubsection{\texorpdfstring{elevio\_obstruction()}{elevio\_obstruction()}}
 {\footnotesize\ttfamily int elevio\+\_\+obstruction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\begin{DoxyReturn}{Returns}
 
+
+Function for reading if the obstruction switch is turned on or off. 
+
+\begin{DoxyReturn}{Returns}
+integer represening if the switch is on or off by 1 or 0. 
 \end{DoxyReturn}
 
 
@@ -189,8 +213,12 @@ Definition at line 112 of file elevio.\+c.
 \doxysubsubsection{\texorpdfstring{elevio\_stopButton()}{elevio\_stopButton()}}
 {\footnotesize\ttfamily int elevio\+\_\+stop\+Button (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\begin{DoxyReturn}{Returns}
 
+
+Function for reading the button state of the stop button. 
+
+\begin{DoxyReturn}{Returns}
+integer representing if the button is pressed or not by 1 or 0 
 \end{DoxyReturn}
 
 
@@ -203,8 +231,12 @@ Definition at line 102 of file elevio.\+c.
 {\footnotesize\ttfamily void elevio\+\_\+stop\+Lamp (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
 
 
+
+Function for turning on or off the pause button lamp. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em value} & \\
+{\em value\mbox{[}in\mbox{]}} & integer representing if the light is on or off (0 or 1) \\
 \hline
 \end{DoxyParams}
 
